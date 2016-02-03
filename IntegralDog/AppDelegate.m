@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "LoginViewController.h"
 
 @interface AppDelegate ()
 
@@ -16,7 +17,24 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+
+    self.autoSizeScaleX = [UIScreen mainScreen].bounds.size.width/320.0;
+    self.autoSizeScaleY = [UIScreen mainScreen].bounds.size.height/480.0;
+    self.window = [[UIWindow alloc]initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    _tabbarController = [[TabbarController alloc]init];
+    
+    LoginViewController *viewController = [[LoginViewController alloc]init];
+//    UINavigationController * navi = [[UINavigationController alloc]initWithRootViewController:viewController];
+    self.window.rootViewController = viewController;
+//    self.window.rootViewController = [[LoginViewController alloc]init];
+//    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:_tabbarController];
+//    nav.navigationBar.hidden = YES;
+//    self.window.rootViewController = nav;
+    
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
